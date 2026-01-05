@@ -20,6 +20,13 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+           - name: Basic security check (hardcoded secrets)
+        run: |
+          if grep -R "password" .; then
+            echo "Hardcoded password detected"
+            exit 1
+          fi
+
 
     - name: Build project
       run: dotnet build --no-restore
