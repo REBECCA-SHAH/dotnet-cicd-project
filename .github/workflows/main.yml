@@ -20,10 +20,15 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-                - name: Basic security check (hardcoded secrets)
-        shell: bash
+          - name: Basic security check (hardcoded secrets)
+        shell: pwsh
         run: |
-          grep -R "password" --include="*.cs" . && exit 1 || echo "No hardcoded secrets found"
+          $matches = Get-ChildItem -Recurse -Include *.cs | Select-String -Pattern "password"
+          if ($matches) {
+            Write-Error "Hardcoded password detected in source code"
+          } else {
+            Write-Output "No hardcoded secrets found"
+          }
 
     - name: Build project
       run: dotnet build --no-restore
