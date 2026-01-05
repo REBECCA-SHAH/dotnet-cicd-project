@@ -1,13 +1,13 @@
 name: CI/CD Pipeline
 
 on:
-  permissions:
-    contents: write
-
   push:
     branches:
       - main
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   build:
