@@ -30,3 +30,4 @@ C:\Users\shah rebecca\Desktop\dotnet-cicd-project\Helloapi\obj\Debug\net9.0\refi
 C:\Users\shah rebecca\Desktop\dotnet-cicd-project\Helloapi\obj\Debug\net9.0\Helloapi.pdb
 C:\Users\shah rebecca\Desktop\dotnet-cicd-project\Helloapi\obj\Debug\net9.0\Helloapi.genruntimeconfig.cache
 C:\Users\shah rebecca\Desktop\dotnet-cicd-project\Helloapi\obj\Debug\net9.0\ref\Helloapi.dll
+C:\Users\shah rebecca\Desktop\dotnet-cicd-project\Helloapi\obj\Debug\net9.0\Helloapi.sourcelink.json
