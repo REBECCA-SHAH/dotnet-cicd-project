@@ -1,68 +1,80 @@
-CI/CD Pipeline for .NET Application
+**Pipeline Overview**
 
- -Overview
+The workflow is triggered automatically on every push and pull request to the main branch.
 
-This project demonstrates a basic Continuous Integration (CI) pipeline for a .NET application using GitHub Actions. 
-The pipeline automatically validates builds on every code push, ensuring that the application compiles successfully in a clean Windows environment.
+**Continuous Integration (CI)**
 
-The goal of this project is to understand and implement CI fundamentals, including build automation, YAML-based workflows, and Git-based integration checks.
+Source code checkout
 
--Tech Stack
+Dependency restoration using .NET CLI
 
-* .NET (ASP.NET Core)
-* GitHub Actions
-* YAML (workflow configuration)
-* Windows-based runner
-* Git & GitHub
+Build validation
 
--CI Pipeline Workflow
+Automated unit test execution
 
-The CI pipeline is triggered automatically on:
+Basic security scanning of source code
 
-* Every push to the repository
-* Every pull request
+Release build publishing
 
--Pipeline Steps:
+Build artifact generation and upload
 
-1. Checkout Code – Fetches the latest code from the repository
-2. Setup .NET Environment – Installs the required .NET SDK
-3. Restore Dependencies – Downloads all required packages
-4. Build Application – Compiles the application to validate the build
+**Continuous Delivery (CD)**
 
-If any step fails, the pipeline stops and reports an error.
+Automatic creation of a versioned GitHub Release
 
- -Project Structure
-.
-├── Helloapi/                # .NET application source code
-├── .github/workflows/       # GitHub Actions CI workflow
-│   └── main.yml
-├── .gitignore
-└── README.md
+Attachment of published build artifacts
 
--  How to Run Locally
+Execution only after successful CI completion
 
-Prerequisites
+** Technologies Used**
 
-* .NET SDK installed
--Steps
+.NET 9
 
-bash
-dotnet restore
-dotnet build
-dotnet run
-What This Project Demonstrates
+GitHub Actions
 
-* Automated build validation using GitHub Actions
-* YAML-based CI workflow configuration
-* Windows-based CI execution for .NET applications
-* Hands-on understanding of Continuous Integration concepts
+YAML
 
-Future Improvements
+PowerShell
 
-* Add automated unit tests*to the pipeline
-* Generate and upload build artifacts
-* Introduce basic security checks
-* Extend pipeline to include a deployment stage
+Windows-based GitHub runners
 
+**Security Check**
 
+A basic security scan is included in the pipeline to detect potential hardcoded secrets in source files.
+The check is implemented using PowerShell, ensuring compatibility with Windows runners and preventing false positives.
 
+** Artifacts & Releases**
+
+Published application files are packaged as build artifacts.
+
+Artifacts are automatically attached to GitHub Releases as part of the CD stage.
+
+Each release is versioned using the workflow run number.
+
+** Workflow Structure**
+.github/
+ └── workflows/
+     └── main.yml
+
+**Key Learnings**
+
+Designing CI/CD pipelines for Windows-based environments
+
+Writing and debugging GitHub Actions workflows using YAML
+
+Handling real-world CI failures (permissions, shell behavior, deprecated actions)
+
+Implementing secure and reliable automation practices
+
+Understanding the separation of CI and CD in enterprise systems
+
+** Status**
+
+✔ CI pipeline fully functional
+✔ CD pipeline successfully creating GitHub Releases
+✔ Resume and interview ready
+
+**Note**
+
+This project focuses on pipeline design and automation.
+Deployment to runtime environments (e.g., cloud services or servers) is intentionally excluded, as it is typically handled by separate deployment pipelines in enterprise setups.
