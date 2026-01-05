@@ -20,10 +20,10 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-          - name: Basic security check (hardcoded secrets)
+                - name: Basic security check (hardcoded secrets)
+        shell: bash
         run: |
-          grep -R "password" --include="*.cs" . && exit 1 || echo "No hardcoded secrets found in source code"
-
+          grep -R "password" --include="*.cs" . && exit 1 || echo "No hardcoded secrets found"
 
     - name: Build project
       run: dotnet build --no-restore
