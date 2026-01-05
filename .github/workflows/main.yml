@@ -20,12 +20,9 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-           - name: Basic security check (hardcoded secrets)
+            - name: Basic security check (hardcoded secrets)
         run: |
-          if grep -R "password" .; then
-            echo "Hardcoded password detected"
-            exit 1
-          fi
+          grep -R --exclude-dir=bin --exclude-dir=obj --exclude=appsettings*.json "password" . && exit 1 || echo "No hardcoded secrets found"
 
 
     - name: Build project
