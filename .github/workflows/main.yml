@@ -1,3 +1,4 @@
+# CI pipeline with tests and artifacts
 name: CI Pipeline
 
 on:
